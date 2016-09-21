@@ -2,6 +2,13 @@
 Auteur : Elbaz Jérémie
 Formation : M1 S2I
 
+## Installation & Environnement
+Composer : v1.2
+PHP 7
+MySQL v14.14
+Apache : Module rewrite REQUIRED
+`composer install`
+
 ## Enoncer
 ### 4 sections : 
 
