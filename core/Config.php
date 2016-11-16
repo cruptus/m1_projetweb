@@ -69,7 +69,7 @@ class Config
      * Nom de la base
      * @var string
      */
-    public static $DB_NAME = '';
+    public static $DB_NAME = 'projetweb';
     /**
      * Nom de l'utilisateur
      * @var string
@@ -84,7 +84,7 @@ class Config
      * Host
      * @var string
      */
-    public static $DB_HOST = '';
+    public static $DB_HOST = 'localhost';
 
     /* Path de l'api REST */
     /**

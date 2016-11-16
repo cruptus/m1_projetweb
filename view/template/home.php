@@ -41,24 +41,10 @@
         </ul>
     </nav>
 </header>
-<div class="container">
-    <?php if(isset($errors)) :?>
-        <div class="alert-error">
-            <p>Des erreurs ont été rencontrées : </p>
-            <ul>
-            <?php foreach($errors as $error) : ?>
-                <li><?= $error; ?></li>
-            <?php endforeach; ?>
-            </ul>
-        </div>
-    <?php endif ?>
-    <?= $content; ?>
-</div>
-
+<?= $content; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <!--<script src="/js/jquery-1.11.1.min.js"></script>-->
 <script src="/js/default.js"></script>
-<script src="/js/test.js"></script>
 </body>
 </html>

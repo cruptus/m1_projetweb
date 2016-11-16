@@ -1,4 +1,12 @@
 (function($){
+    $(window).load(function(e){
+        $(".test").height($(window).height()-50);
+    });
+
+    $(window).resize(function(e){
+        $(".test").height($(window).height()-50);
+    });
+
     $("#hamburger").click(function(e){
         e.preventDefault();
         $("body").toggleClass("with-sidebar");

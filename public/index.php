@@ -8,6 +8,7 @@ $router = new App\Router\Router($_GET['url']);
 $router->get("/", 'HomeController@Racine');
 $router->get("home", "HomeController@Index");
 $router->get("signin", "HomeController@Signin");
+$router->get("signup", "HomeController@Signup");
 $router->post("signin", "HomeController@SigninPost");
 
 $router->run();

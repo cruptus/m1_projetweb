@@ -2,12 +2,7 @@
 
 namespace App\Controller;
 
-use App\Helper\App;
 use App\Helper\Validator;
-use App\Helper\Captcha;
-use App\Helper\Mail;
-use App\Config;
-use App\Model\Account;
 
 class HomeController extends Controller {
 
@@ -23,9 +18,14 @@ class HomeController extends Controller {
      * @throws \App\Router\RouterException
      */
     public function index(){
+        $this->template = "home";
         $this->render("home");
     }
 
+    /**
+     * Page de signin
+     * @throws \App\Router\RouterException
+     */
     public function signin(){
         $this->render("signin");
     }
@@ -35,12 +35,20 @@ class HomeController extends Controller {
         $validator->isEmail("email", "Email ou mot de passe invalide");
         $validator->isPassword("password", "Email ou mot de passe invalide");
         if($validator->isValid()){
-
-
-        }else{
+            /**
+             * Todo : Inscription
+             */
+        } else {
             $errors[] = $validator->getErrors()[0];
             $this->render("signin", compact("errors"));
         }
+    }
+
+    /**
+     * Page de signup
+     */
+    public function signup(){
+        $this->render("signup");
     }
 
     /**
@@ -50,5 +58,7 @@ class HomeController extends Controller {
         header('Location: /home');
         die();
     }
+
+
 
 }
