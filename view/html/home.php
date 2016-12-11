@@ -32,4 +32,4 @@
         }
     }
 </script>
-<h1 onclick="checkCookie()">test</h1>
+<h1 onclick="checkCookie()">coucou</h1>

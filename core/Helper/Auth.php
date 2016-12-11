@@ -30,8 +30,9 @@ class Auth{
      * Ajoute à la session l'id de l'utilisateur et le connecte
      * @param $user
      */
-    public function connect($user){
+    public function connect($user, $pseudo){
         $this->session->write('auth', $user);
+        $this->session->write('pseudo', $pseudo);
     }
 
     /**
@@ -47,8 +48,7 @@ class Auth{
      */
     public function disconnect(){
         $this->session->delete('auth');
-        header('Location: /signin');
-        exit();
+        $this->session->delete('pseudo');
     }
 
     /**

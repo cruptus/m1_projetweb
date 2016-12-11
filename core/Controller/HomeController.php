@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Helper\App;
 use App\Helper\Validator;
+use App\Model\User;
 
 class HomeController extends Controller {
 
@@ -18,7 +20,6 @@ class HomeController extends Controller {
      * @throws \App\Router\RouterException
      */
     public function index(){
-        $this->template = "home";
         $this->render("home");
     }
 
@@ -35,9 +36,9 @@ class HomeController extends Controller {
         $validator->isEmail("email", "Email ou mot de passe invalide");
         $validator->isPassword("password", "Email ou mot de passe invalide");
         if($validator->isValid()){
-            /**
-             * Todo : Inscription
-             */
+            $user = new User(['email' => $_POST['email'], 'password' => $_POST['password']]);
+            $user->login();
+            $this->racine();
         } else {
             $errors[] = $validator->getErrors()[0];
             $this->render("signin", compact("errors"));
@@ -49,6 +50,32 @@ class HomeController extends Controller {
      */
     public function signup(){
         $this->render("signup");
+    }
+
+    /**
+     * Page de signup
+     */
+    public function signupPost(){
+        $user = new User([
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
+            'password_valid' => $_POST['password_valid'],
+            'pseudo' => $_POST['pseudo']
+        ]);
+        if($user->isValid()){
+            if($user->save()){
+                $success = 'Vous êtes maintenant inscrit. Un email vous a été envoyé.';
+            }else{
+                $errors[] = 'Email ou pseudo deja utilisé';
+            }
+        }else
+            $errors = $user->getErrors();
+        $this->render("signup", compact('errors', 'success'));
+    }
+
+    public function signout(){
+        App::getAuth()->disconnect();
+        $this->racine();
     }
 
     /**

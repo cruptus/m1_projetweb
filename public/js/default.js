@@ -24,7 +24,7 @@
     });
 
     setTimeout(function(){
-        $('.alert-error').fadeOut(2000);
+        $('.alert').fadeOut(2000);
     }, 4000);
 
 })(jQuery);

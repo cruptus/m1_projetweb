@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico">
 
     <title>Jeux</title>
 
@@ -37,19 +37,29 @@
                     <li><a href="/css/bootstrap">Bootstrap</a></li>
                 </ul>
             </li>
-            <li><a href="/signin">Connexion</a></li>
+            <?php if(\App\Helper\App::getAuth()->isConnect()) : ?>
+                <li><a href="/signout">Deconnexion</a></li>
+            <?php else : ?>
+                <li><a href="/signin">Connexion</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 </header>
 <div class="container">
     <?php if(isset($errors)) :?>
-        <div class="alert-error">
+        <div class="alert alert-error">
             <p>Des erreurs ont été rencontrées : </p>
             <ul>
             <?php foreach($errors as $error) : ?>
                 <li><?= $error; ?></li>
             <?php endforeach; ?>
             </ul>
+        </div>
+    <?php endif ?>
+    <?php if(isset($success)) :?>
+        <div class="alert alert-success">
+            <b>Bravo ! </b>
+            <p><?= $success; ?></p>
         </div>
     <?php endif ?>
     <?= $content; ?>

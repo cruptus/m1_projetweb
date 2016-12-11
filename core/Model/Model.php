@@ -14,6 +14,16 @@ class Model
     protected $fields = [];
 
     /**
+     * Model constructor.
+     * @param array $values
+     */
+    public function __construct($values = array())
+    {
+        foreach ($values as $key => $value)
+            $this->$key = $value;
+    }
+
+    /**
      * Retourne les attributs
      * @param $key
      * @return mixed
@@ -58,6 +68,10 @@ class Model
             $attribute = $this->fields[$i];
             $attributes[$attribute] = $this->$attribute;
         }
-        return App::getDataBase()->insert($this->className, $attributes);
+        try{
+            return App::getDataBase()->insert($this->className, $attributes);
+        }catch (\Exception $exceptione){
+            return false;
+        }
     }
 }
