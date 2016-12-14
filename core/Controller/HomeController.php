@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Helper\App;
+use App\Helper\Captcha;
 use App\Helper\Validator;
 use App\Model\User;
 
@@ -63,10 +64,15 @@ class HomeController extends Controller {
             'pseudo' => $_POST['pseudo']
         ]);
         if($user->isValid()){
-            if($user->save()){
-                $success = 'Vous êtes maintenant inscrit. Un email vous a été envoyé.';
-            }else{
-                $errors[] = 'Email ou pseudo deja utilisé';
+            $captcha = new Captcha();
+            if ($captcha->isValid($_POST['g-recaptcha-response'])) {
+                if($user->save()){
+                    $success = 'Vous êtes maintenant inscrit. Un email vous a été envoyé.';
+                }else{
+                    $errors[] = 'Email ou pseudo deja utilisé';
+                }
+            } else {
+                $errors[] = "Captcha invalide";
             }
         }else
             $errors = $user->getErrors();

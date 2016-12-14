@@ -16,6 +16,12 @@
         <label for="password_valid" class="form">Repeter le mot de passe</label>
         <input type="password" id="password_valid" name="password_valid" class="form" placeholder="Repeter le mot de passe" required />
     </div>
+    <div class="form">
+        <?php
+            $captcha = new \App\Helper\Captcha();
+            echo $captcha->html();
+        ?>
+    </div>
 
     <div class="form">
         <input type="submit" class="form" value="Je m'inscris" />

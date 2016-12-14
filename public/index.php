@@ -19,4 +19,8 @@ $router->post("signin", "HomeController@SigninPost");
 $router->get("/html/dragdrop", "HtmlController@Drag");
 $router->get("/html/google", "HtmlController@Google");
 
+// css
+$router->get("/css/rotate", "CssController@Rotate");
+$router->get("/css/translate", "CssController@Translate");
+
 $router->run();

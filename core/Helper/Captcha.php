@@ -23,7 +23,7 @@ class Captcha {
      * @return string
      */
     public function html(){
-        return "<div class='g-recaptcha' data-sitekey='{$this->website}'></div>";
+        return "<div class='g-recaptcha' style='margin: 0 auto' data-sitekey='{$this->website}'></div>";
     }
 
     /**

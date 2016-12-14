@@ -21,7 +21,6 @@ Apache : Module rewrite REQUIRED
     - Demo API Drag&Drop
     - Demo API webworker  
 - CSS
-    - Demo Webkit
     - Demo translate
     - Demo rotate
     - Demo Bootstrap  

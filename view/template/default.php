@@ -16,6 +16,8 @@
 
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <header>
     <a href="/" class="logo">Grames</a>
@@ -31,7 +33,6 @@
             </li>
             <li><a href="#">CSS</a>
                 <ul>
-                    <li><a href="/css/webkit">Webkit</a></li>
                     <li><a href="/css/translate">Translate</a></li>
                     <li><a href="/css/rotate">Rotate</a></li>
                     <li><a href="/css/bootstrap">Bootstrap</a></li>
@@ -65,7 +66,6 @@
     <?= $content; ?>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <!--<script src="/js/jquery-1.11.1.min.js"></script>-->
 <script src="/js/default.js"></script>
