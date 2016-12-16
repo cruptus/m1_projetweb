@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Helper\App;
 use App\Helper\Captcha;
 use App\Helper\Validator;
+use App\Model\Score;
 use App\Model\User;
 
 class HomeController extends Controller {
@@ -21,7 +22,9 @@ class HomeController extends Controller {
      * @throws \App\Router\RouterException
      */
     public function index(){
-        $this->render("home");
+        $game_2048 = Score::getTop5('2048');
+        $game_snake = Score::getTop5('snake');
+        $this->render("home", compact('game_2048', 'game_snake'));
     }
 
     /**
@@ -38,12 +41,13 @@ class HomeController extends Controller {
         $validator->isPassword("password", "Email ou mot de passe invalide");
         if($validator->isValid()){
             $user = new User(['email' => $_POST['email'], 'password' => $_POST['password']]);
-            $user->login();
-            $this->racine();
-        } else {
-            $errors[] = $validator->getErrors()[0];
-            $this->render("signin", compact("errors"));
-        }
+            if($user->login())
+                $this->racine();
+            else
+                $errors[] = "Email ou mot de passe invalide";
+        } else
+            $errors[] = "Email ou mot de passe invalide";
+        $this->render("signin", compact("errors"));
     }
 
     /**
@@ -67,7 +71,7 @@ class HomeController extends Controller {
             $captcha = new Captcha();
             if ($captcha->isValid($_POST['g-recaptcha-response'])) {
                 if($user->save()){
-                    $success = 'Vous êtes maintenant inscrit. Un email vous a été envoyé.';
+                    $success = 'Vous êtes maintenant inscrit.';
                 }else{
                     $errors[] = 'Email ou pseudo deja utilisé';
                 }

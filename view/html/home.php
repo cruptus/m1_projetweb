@@ -1,35 +1,29 @@
+<h1>Grames, le site de jeu reférence</h1>
+<p>Ce site vous propose :</p>
+<ul>
+    <li>Une partie HTML</li>
+    <li>Une partie CSS</li>
+    <li>Différent jeux (nécessite une connexion)</li>
+    <li>Un livre d'Or</li>
+</ul>
 
-<script>
-    function setCookie(cname, cvalue, exdays){
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = "expires = "+ d.toUTCString();
-        document.cookie = cname+"="+cvalue+";"+expires;
-    }
+<div class="col">
+    <img src="/images/2048.png" alt="Logo 2048" width="150" height="150">
+    <h3>TOP 5 de 2048</h3>
+    <?php $i=1; foreach ($game_2048 as $pseudo => $score): ?>
+        <ul style="list-style: none; padding-left: 0;">
+            <li><?= $i++.'. '.$pseudo. ' : '.$score ?></li>
+        </ul>
+    <?php endforeach; ?>
+</div>
+<div class="col">
+    <img src="/images/snake.png" alt="Logo 2048" width="150" height="150">
+    <h3>TOP 5 de Snake</h3>
+    <?php $i=1; foreach ($game_snake as $pseudo => $score): ?>
+        <ul style="list-style: none; padding-left: 0;">
+            <li><?= $i++.'. '.$pseudo. ' : '.$score ?></li>
+        </ul>
+    <?php endforeach; ?>
+</div>
 
-    function getCookie(cname){
-        var name = cname + "=";
-        var ca = document.cookie.split(";");
-        for(var i = 0; i < ca.length; i++){
-            var c = ca[i];
-            while (c.charAt(0)=='') c = c.substring(1);
-            if(c.indexOf(name) == 0){
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
 
-    function checkCookie(){
-        var user = getCookie("username");
-        if(user != ""){
-            alert("Welcome again "+user);
-        }else{
-            user = prompt("Please enter your nae :", "");
-            if (user != "" && user != null) {
-                setCookie("username", user, 30);
-            }
-        }
-    }
-</script>
-<h1 onclick="checkCookie()">coucou</h1>

@@ -335,3 +335,14 @@ input[type='submit'].form:focus{
 .form > .g-recaptcha > div {
     margin: 20px auto;
 }
+
+.col {
+    width: 50%;
+    float: left;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.col > h3{
+    padding: 10px 0;
+}

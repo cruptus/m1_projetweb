@@ -1,5 +1,4 @@
 <h1>Connexion</h1>
-<button onclick="this.innerHTML = JSClock()">Click</button>
 <form action="/signin" method="post">
     <div class="form">
         <label for="email" class="form">Identifiant</label>

@@ -23,4 +23,11 @@ $router->get("/html/google", "HtmlController@Google");
 $router->get("/css/rotate", "CssController@Rotate");
 $router->get("/css/translate", "CssController@Translate");
 
+// Game
+$router->get("/js/2048", "JSController@Game2048");
+$router->post("/js/2048", "JSController@Game2048Post");
+$router->get("/js/snake", "JSController@GameSnake");
+$router->post("/js/snake", "JSController@GameSnakePost");
+
+
 $router->run();

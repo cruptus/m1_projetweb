@@ -28,6 +28,7 @@ class Controller {
         ob_start();
         require __DIR__."/../../view/html/error/{$code}.php";
         $content = ob_get_clean();
+        http_response_code($code);
         require __DIR__."/../../view/template/default.php";
     }
 

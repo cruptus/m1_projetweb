@@ -17,13 +17,30 @@
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/js/hammer.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
-
+<script>
+    function loadcss(filename) {
+        var file = document.createElement("link");
+        file.setAttribute("rel", "stylesheet");
+        file.setAttribute("type", "text/css");
+        file.setAttribute("href", filename);
+        document.head.appendChild(file);
+    }
+</script>
 <header>
     <a href="/" class="logo">Grames</a>
     <a href="#" id="hamburger" class="hamburger"></a>
     <nav id="nav">
         <ul>
+            <?php if(\App\Helper\App::getAuth()->isConnect()) : ?>
+                <li><a href="#">Jeux</a>
+                    <ul>
+                        <li><a href="/js/2048">2048</a></li>
+                        <li><a href="/js/snake">Snake</a></li>
+                    </ul>
+                </li>
+            <?php endif; ?>
             <li><a href="#">HTML</a>
                 <ul>
                     <li><a href="/html/google">API Google</a></li>
@@ -69,6 +86,5 @@
 
 <!--<script src="/js/jquery-1.11.1.min.js"></script>-->
 <script src="/js/default.js"></script>
-<script src="/js/test.js"></script>
 </body>
 </html>

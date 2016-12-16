@@ -36,7 +36,7 @@ class User extends Model
         ]
     ];
 
-    protected $fields = ['email', 'password', 'salt'];
+    protected $fields = ['email', 'password', 'salt', 'pseudo'];
 
     public function isValid()
     {
